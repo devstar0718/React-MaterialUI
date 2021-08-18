@@ -12,14 +12,16 @@ import {
   FormControlLabel,
   Checkbox,
   InputBase,
-  MenuItem
+  MenuItem,
+  Select,
+  IconButton
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import {
-  Search as SearchIcon
+  Search as SearchIcon,
+  MoreVertical as MoreVerticalIcon
 } from 'react-feather';
 import { withStyles } from '@material-ui/styles';
-import { Select } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
 
 const BootstrapInput = withStyles((theme) => ({
@@ -61,7 +63,8 @@ const columns = [
   {
     field: 'title',
     headerName: 'Title',
-    width: 450,
+    flex: 1,
+    minWidth: 300,
     filterable: false,
     sortable: false,
   },
@@ -93,11 +96,52 @@ const columns = [
     filterable: false,
     width: 150,
   },
+  {
+    field: 'id',
+    headerName: ' ',
+    sortable: false,
+    filterable: false,
+    width: 150,
+    renderCell: () => (
+      <strong>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          style={{
+            marginLeft: 8,
+            marginRight: 8,
+            textTransform: 'initial',
+            minWidth: 80
+          }}
+        >
+          View
+        </Button>
+        <IconButton>
+          <MoreVerticalIcon size={16} />
+        </IconButton>
+      </strong>
+    ),
+  }
 ];
 
 const rows = [
-  { id: 1, title: "[Example Pad] Test Interview - Software Engineer", status: 'Not Started', creator: 'Boris Nikolaev', created: "about 5 hours ago", language: 'java' },
-  { id: 2, title: "[Example Pad] Test Interview - Software Engineer", status: 'Not Started', creator: 'Boris Nikolaev', created: "about 5 hours ago", language: 'java' },
+  {
+    id: 1,
+    title: '[Example Pad] Test Interview - Software Engineer',
+    status: 'Not Started',
+    creator: 'Boris Nikolaev',
+    created: 'about 5 hours ago',
+    language: 'java'
+  },
+  {
+    id: 2,
+    title: '[Example Pad] Test Interview - Software Engineer',
+    status: 'Not Started',
+    creator: 'Boris Nikolaev',
+    created: 'about 5 hours ago',
+    language: 'java'
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -146,10 +190,11 @@ const Dashboard = () => {
                   color="textSecondary"
                   variant="body2"
                 >
-                  Your organization's pads appear below. You can search by pad creator or title, and filter by pad format, status or when a pad was created.
+                  Your organization&apos;s pads appear below. You can search by pad creator or
+                  title, and filter by pad format, status or when a pad was created.
                 </Typography>
               </Box>
-              <Button variant="contained" color="primary" style={{ textTransform: "initial", minWidth: 120 }}>Create Pad</Button>
+              <Button variant="contained" color="primary" style={{ textTransform: 'initial', minWidth: 120 }}>Create Pad</Button>
             </Box>
           </Grid>
           <Grid
@@ -161,14 +206,14 @@ const Dashboard = () => {
               alignItems="center"
             >
               <Box flexGrow={1}>
-                <FormControl fullWidth className={classes.margin} style={{ backgroundColor: "white" }} variant="outlined" size="small">
+                <FormControl fullWidth className={classes.margin} style={{ backgroundColor: 'white' }} variant="outlined" size="small">
                   <OutlinedInput
                     id="outlined-adornment-amount"
                     // value={values.amount}
                     // onChange={handleChange('amount')}
                     inputProps={{
                       placeholder: 'Search pad title or creator',
-                      style: { backgroundColor: "white" }
+                      style: { backgroundColor: 'white' }
                     }}
                     startAdornment={<InputAdornment position="start"><SearchIcon size={15} /></InputAdornment>}
                   // labelWidth={60}
@@ -179,7 +224,7 @@ const Dashboard = () => {
                 <FormControlLabel classes={{ label: classes.labelSmall }} control={<Checkbox name="checkbox" />} label="Only search my pads" />
               </Box>
               <Box width="15%" ml={2}>
-                <FormControl className={classes.margin} style={{ width: "100%" }}>
+                <FormControl className={classes.margin} style={{ width: '100%' }}>
                   <Select
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
@@ -193,7 +238,7 @@ const Dashboard = () => {
                 </FormControl>
               </Box>
               <Box width="15%" ml={2}>
-                <FormControl className={classes.margin} style={{ width: "100%" }}>
+                <FormControl className={classes.margin} style={{ width: '100%' }}>
                   <Select
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
@@ -210,7 +255,7 @@ const Dashboard = () => {
                 </FormControl>
               </Box>
               <Box width="15%" ml={2}>
-                <FormControl className={classes.margin} style={{ width: "100%" }}>
+                <FormControl className={classes.margin} style={{ width: '100%' }}>
                   <Select
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"

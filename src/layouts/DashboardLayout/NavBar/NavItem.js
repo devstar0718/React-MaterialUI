@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {
   Button,
   ListItem,
-  makeStyles
+  makeStyles,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +64,6 @@ const NavItem = ({
         {Icon && (
           <Icon
             className={classes.icon}
-            size="20"
           />
         )}
         <span className={classes.title}>

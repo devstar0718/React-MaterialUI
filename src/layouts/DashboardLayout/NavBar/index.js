@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
   Box,
   Button,
-  Divider,
   Drawer,
   Hidden,
   List,
@@ -13,40 +11,37 @@ import {
   makeStyles,
   IconButton
 } from '@material-ui/core';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Database as DatabaseIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon,
-  Star as StarIcon,
-  Menu as MenuIcon
+  Star as StarIcon
 } from 'react-feather';
+import { ReactComponent as PadIcon } from '../../../icons/PadIcon.svg';
+import { ReactComponent as FilesIcon } from '../../../icons/FilesIcon.svg';
+import { ReactComponent as QuestionIcon } from '../../../icons/QuestionIcon.svg';
+import { ReactComponent as UsersIcon } from '../../../icons/UsersIcon.svg';
+import { ReactComponent as DatabaseIcon } from '../../../icons/DatabaseIcon.svg';
 import NavItem from './NavItem';
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   name: 'Katarina Smith',
-  team: "Team"
+  team: 'Team'
 };
 
 const items = [
   {
     href: '/app/dashboard',
-    icon: BarChartIcon,
+    icon: PadIcon,
     title: 'Pads List'
   },
   {
     href: '/app/customers',
-    icon: UsersIcon,
+    icon: QuestionIcon,
     title: 'Question Bank'
   },
   {
     href: '/app/products',
-    icon: ShoppingBagIcon,
+    icon: FilesIcon,
     title: 'Files'
   },
   {
@@ -64,13 +59,13 @@ const items = [
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
     width: 256,
-    backgroundColor: "#E2E6EA",
+    backgroundColor: '#E2E6EA',
   },
   desktopDrawer: {
     width: 256,
     top: 128,
     height: 'calc(100% - 128px)',
-    backgroundColor: "#E2E6EA",
+    backgroundColor: '#E2E6EA',
   },
   avatar: {
     cursor: 'pointer',
@@ -78,11 +73,11 @@ const useStyles = makeStyles(() => ({
     height: 64
   },
   button: {
-    width: "95%",
-    textTransform: "initial"
+    width: '95%',
+    textTransform: 'initial'
   },
   team: {
-    padding: "26px 16px 0 20px"
+    padding: '26px 16px 0 20px'
   }
 }));
 
@@ -117,7 +112,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           {user.team}
         </Typography>
         <IconButton>
-          <MenuIcon size={16} />
+          <MenuOpenIcon fontSize="small" />
         </IconButton>
       </Box>
       <Box p={2}>
@@ -149,7 +144,8 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             variant="contained"
             className={classes.button}
           >
-            Upgrade &nbsp;&nbsp; <StarIcon size="16" />
+            Upgrade &nbsp;&nbsp;
+            <StarIcon size="16" />
           </Button>
         </Box>
       </Box>

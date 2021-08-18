@@ -13,7 +13,7 @@ const theme = createTheme({
       main: colors.blue[800]
     },
     secondary: {
-      main: "#32CEAF",
+      main: '#32CEAF',
       contrastText: '#fff',
     },
     text: {

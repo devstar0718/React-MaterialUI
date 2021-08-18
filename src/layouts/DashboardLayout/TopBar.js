@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
-  Badge,
   Box,
   Hidden,
   IconButton,
@@ -14,8 +13,6 @@ import {
   Typography
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-// import InputIcon from '@material-ui/icons/Down';
 import {
   ChevronDown as ChevronDownIcon
 } from 'react-feather';
@@ -28,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
     height: 60
   },
   button: {
-    textTransform: "initial"
+    textTransform: 'initial'
   },
   upgradeBar: {
-    backgroundColor: "#353C4E",
+    backgroundColor: '#353C4E',
     color: theme.palette.common.white
   }
 }));
@@ -42,7 +39,6 @@ const TopBar = ({
   ...rest
 }) => {
   const classes = useStyles();
-  const [notifications] = useState([]);
 
   return (
     <AppBar
@@ -65,8 +61,9 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton> */}
-          <Button color="inherit" style={{ textTransform: "initial" }}>
-            Hello, Boris &nbsp;&nbsp;&nbsp;
+          <Button color="inherit" style={{ textTransform: 'initial' }}>
+            Hello, Boris
+            &nbsp;&nbsp;&nbsp;
             <ChevronDownIcon size={16} />
           </Button>
         </Hidden>
@@ -81,7 +78,8 @@ const TopBar = ({
       </Toolbar>
       <Toolbar className={classes.upgradeBar}>
         <Box width="100%" display="flex" alignItems="center" justifyContent="center">
-          <Typography variant="body2">You have 7 days left on your trial.</Typography> &nbsp;&nbsp;&nbsp;
+          <Typography variant="body2">You have 7 days left on your trial.</Typography>
+          &nbsp;&nbsp;&nbsp;
           <Button
             color="secondary"
             component="a"
