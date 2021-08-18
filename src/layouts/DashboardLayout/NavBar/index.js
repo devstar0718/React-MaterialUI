@@ -35,22 +35,26 @@ const items = [
     title: 'Pads List'
   },
   {
-    href: '/app/customers',
+    // href: '/app/customers',
+    href: '#',
     icon: QuestionIcon,
     title: 'Question Bank'
   },
   {
-    href: '/app/products',
+    // href: '/app/products',
+    href: '#',
     icon: FilesIcon,
     title: 'Files'
   },
   {
-    href: '/app/account',
+    // href: '/app/account',
+    href: '#',
     icon: DatabaseIcon,
     title: 'Databases'
   },
   {
-    href: '/app/settings',
+    // href: '/app/settings',
+    href: '#',
     icon: UsersIcon,
     title: 'Members'
   }
