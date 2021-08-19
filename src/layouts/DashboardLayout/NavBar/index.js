@@ -78,8 +78,9 @@ const useStyles = makeStyles(() => ({
     height: 64
   },
   button: {
-    width: '95%',
-    textTransform: 'initial'
+    width: '90%',
+    textTransform: 'initial',
+    height: '42px'
   },
   team: {
     padding: '14.1px 15.5px 13.91px 20px'
