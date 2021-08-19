@@ -9,16 +9,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.dark,
     display: 'flex',
     height: '100%',
-    overflow: 'hidden',
     width: '100%'
   },
   wrapper: {
     display: 'flex',
     flex: '1 1 auto',
     overflow: 'hidden',
-    paddingTop: 128,
+    paddingTop: 135,
     [theme.breakpoints.up('lg')]: {
-      paddingLeft: 256
+      paddingLeft: 270
     }
   },
   contentContainer: {
@@ -28,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flex: '1 1 auto',
-    height: '100%',
     overflow: 'auto'
   }
 }));

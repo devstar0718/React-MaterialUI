@@ -14,12 +14,10 @@ import {
   InputBase,
   MenuItem,
   Select,
-  IconButton
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import {
   Search as SearchIcon,
-  MoreVertical as MoreVerticalIcon
 } from 'react-feather';
 import { withStyles } from '@material-ui/styles';
 import { DataGrid } from '@material-ui/data-grid';
@@ -96,33 +94,6 @@ const columns = [
     filterable: false,
     width: 150,
   },
-  {
-    field: 'id',
-    headerName: ' ',
-    sortable: false,
-    filterable: false,
-    width: 150,
-    renderCell: () => (
-      <strong>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="small"
-          style={{
-            marginLeft: 8,
-            marginRight: 8,
-            textTransform: 'initial',
-            minWidth: 80
-          }}
-        >
-          View
-        </Button>
-        <IconButton>
-          <MoreVerticalIcon size={16} />
-        </IconButton>
-      </strong>
-    ),
-  }
 ];
 
 const rows = [
@@ -148,11 +119,51 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
+    paddingRight: '72px',
+    paddingTop: '24px'
   },
   labelSmall: {
     fontSize: 14
+  },
+  p24: {
+    padding: '0 24px',
+  },
+  pb: {
+    paddingBottom: '16px',
+  },
+  padBtn: {
+    height: '42px',
+    minWidth: '121.66px',
+    maxWidth: '121.66px',
+    padding: '8px 22px',
+    lineHeight: '1.5',
+    letterSpacing: '0.42px',
+    background: '#2D72CC',
+    fontSize: '15px',
+    fontWeight: '400',
+  },
+  headerText: {
+    marginTop: '12px',
+    fontWeight: '400',
+    lineHeight: '1.75',
+    letterSpacing: '0.00938em',
+    fontSize: '1rem',
+  },
+  boxWidth: {
+    width: '165px',
+    height: '37.63px',
+  },
+  filterBox: {
+    padding: '10.5px 32px 10.5px'
+  },
+  checkBox: {
+    width: '100%',
+  },
+  select: {
+    '& .MuiSelect-selectMenu': {
+      fontSize: '14px !important',
+      padding: '6.64px 32px 9px 14px !important',
+    }
   }
 }));
 
@@ -164,42 +175,41 @@ const Dashboard = () => {
       className={classes.root}
       title="Dashboard"
     >
-      <Container maxWidth={false}>
+      <Container maxWidth={false} className={classes.p24}>
         <Grid
           container
-          spacing={5}
         >
           <Grid
             item
-            xs={11}
+            xs={12}
+            className={classes.pb}
           >
             <Box
               display="flex"
-              alignItems="center"
               justifyContent="space-between"
             >
-              <Box>
+              <Box paddingRight={2}>
                 <Typography
                   color="textPrimary"
-                  gutterBottom
                   variant="h3"
                 >
                   Team Pads
                 </Typography>
                 <Typography
                   color="textSecondary"
-                  variant="body2"
+                  variant="h6"
+                  className={classes.headerText}
                 >
                   Your organization&apos;s pads appear below. You can search by pad creator or
                   title, and filter by pad format, status or when a pad was created.
                 </Typography>
               </Box>
-              <Button variant="contained" color="primary" style={{ textTransform: 'initial', minWidth: 120 }}>Create Pad</Button>
+              <Button variant="contained" color="primary" className={classes.padBtn} style={{ textTransform: 'initial' }}>Create Pad</Button>
             </Box>
           </Grid>
           <Grid
             item
-            xs={11}
+            xs={12}
           >
             <Box
               display="flex"
@@ -208,6 +218,7 @@ const Dashboard = () => {
               <Box flexGrow={1}>
                 <FormControl fullWidth className={classes.margin} style={{ backgroundColor: 'white' }} variant="outlined" size="small">
                   <OutlinedInput
+                    style={{ height: '37px', fontSize: '14px' }}
                     id="outlined-adornment-amount"
                     // value={values.amount}
                     // onChange={handleChange('amount')}
@@ -215,21 +226,22 @@ const Dashboard = () => {
                       placeholder: 'Search pad title or creator',
                       style: { backgroundColor: 'white' }
                     }}
-                    startAdornment={<InputAdornment position="start"><SearchIcon size={15} /></InputAdornment>}
+                    startAdornment={<InputAdornment position="start"><SearchIcon size={24} /></InputAdornment>}
                   // labelWidth={60}
                   />
                 </FormControl>
               </Box>
-              <Box width="17%" ml={2}>
-                <FormControlLabel classes={{ label: classes.labelSmall }} control={<Checkbox name="checkbox" />} label="Only search my pads" />
+              <Box width="17%" style={{ marginLeft: '13px', marginRight: '-11.4px', width: '178.64px' }}>
+                <FormControlLabel classes={{ label: classes.labelSmall }} className={classes.checkBox} control={<Checkbox name="checkbox" />} label="Only search my pads" />
               </Box>
-              <Box width="15%" ml={2}>
+              <Box width="15%" ml={1.5} className={classes.boxWidth}>
                 <FormControl className={classes.margin} style={{ width: '100%' }}>
                   <Select
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
                     value={10}
                     input={<BootstrapInput />}
+                    className={classes.select}
                   >
                     <MenuItem value={10}>Any format</MenuItem>
                     <MenuItem value={20}>Take-Home</MenuItem>
@@ -237,13 +249,14 @@ const Dashboard = () => {
                   </Select>
                 </FormControl>
               </Box>
-              <Box width="15%" ml={2}>
+              <Box width="15%" ml={1.5} className={classes.boxWidth}>
                 <FormControl className={classes.margin} style={{ width: '100%' }}>
                   <Select
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
                     value={10}
                     input={<BootstrapInput />}
+                    className={classes.select}
                   >
                     <MenuItem value={10}>Any status</MenuItem>
                     <MenuItem value={20}>Not started</MenuItem>
@@ -254,13 +267,17 @@ const Dashboard = () => {
                   </Select>
                 </FormControl>
               </Box>
-              <Box width="15%" ml={2}>
-                <FormControl className={classes.margin} style={{ width: '100%' }}>
+              <Box width="15%" ml={1.5} className={classes.boxWidth}>
+                <FormControl variant="filled" size="small" className={classes.margin} style={{ width: '100%' }}>
                   <Select
                     labelId="demo-customized-select-label"
                     id="demo-customized-select"
                     value={10}
                     input={<BootstrapInput />}
+                    inputProps={{
+                      style: { margin: 0 }
+                    }}
+                    className={classes.select}
                   >
                     <MenuItem value={10}>Created anytime</MenuItem>
                     <MenuItem value={20}>Last day</MenuItem>
@@ -276,7 +293,8 @@ const Dashboard = () => {
           </Grid>
           <Grid
             item
-            xs={11}
+            xs={12}
+            style={{ marginTop: '10px' }}
           >
             <div style={{ backgroundColor: 'white' }}>
               <DataGrid

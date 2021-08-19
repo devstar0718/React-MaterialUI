@@ -19,7 +19,12 @@ const theme = createTheme({
     text: {
       primary: colors.blueGrey[900],
       secondary: colors.blueGrey[600]
-    }
+    },
+    MuiMenuItem: {
+      root: {
+        fontSize: 12,
+      },
+    },
   },
   shadows,
   typography

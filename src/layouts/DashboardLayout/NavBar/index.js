@@ -66,10 +66,11 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#E2E6EA',
   },
   desktopDrawer: {
-    width: 256,
-    top: 128,
-    height: 'calc(100% - 128px)',
+    width: 270,
+    top: 135,
+    height: 'calc(100% - 134px)',
     backgroundColor: '#E2E6EA',
+    zIndex: '10',
   },
   avatar: {
     cursor: 'pointer',
@@ -81,7 +82,18 @@ const useStyles = makeStyles(() => ({
     textTransform: 'initial'
   },
   team: {
-    padding: '26px 16px 0 20px'
+    padding: '14.1px 15.5px 13.91px 20px'
+  },
+  p0: {
+    padding: '0',
+    color: '#9e9e9e',
+  },
+  name: {
+    fontSize: '14px',
+    fontWeight: '700',
+    lineHeight: '1.167',
+    letterSpacing: '0',
+    textTransform: 'uppercase'
   }
 }));
 
@@ -101,6 +113,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       height="100%"
       display="flex"
       flexDirection="column"
+      padding="16px 0 0 0"
     >
       <Box
         className={classes.team}
@@ -115,12 +128,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         >
           {user.team}
         </Typography>
-        <IconButton>
+        <IconButton className={classes.p0}>
           <MenuOpenIcon fontSize="small" />
         </IconButton>
       </Box>
-      <Box p={2}>
-        <List>
+      <Box>
+        <List style={{ padding: '0' }}>
           {items.map((item) => (
             <NavItem
               href={item.href}
@@ -148,7 +161,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             variant="contained"
             className={classes.button}
           >
-            Upgrade &nbsp;&nbsp;
+            Upgrade
             <StarIcon size="16" />
           </Button>
         </Box>

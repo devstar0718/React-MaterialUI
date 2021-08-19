@@ -22,8 +22,8 @@ const useStyles = makeStyles(() => createStyles({
       textDecoration: 'none'
     },
     '#root': {
-      height: '100%',
-      width: '100%'
+      height: '1400px',
+      width: '100%',
     }
   }
 }));
