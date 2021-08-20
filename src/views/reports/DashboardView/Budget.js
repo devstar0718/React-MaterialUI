@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     backgroundColor: colors.red[600],
-    height: 56,
-    width: 56
+    height: 40,
+    width: 40
   },
   differenceIcon: {
     color: colors.red[900]

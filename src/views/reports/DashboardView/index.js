@@ -14,11 +14,14 @@ import {
   InputBase,
   MenuItem,
   Select,
+  IconButton
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import {
-  Search as SearchIcon,
+  // Search as SearchIcon,
+  MoreVertical as MoreVerticalIcon,
 } from 'react-feather';
+import SearchIcon from '@material-ui/icons/Search';
 import { withStyles } from '@material-ui/styles';
 import { DataGrid } from '@material-ui/data-grid';
 
@@ -33,7 +36,7 @@ const BootstrapInput = withStyles((theme) => ({
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
     border: '1px solid #ced4da',
-    fontSize: 14,
+    fontSize: 6,
     padding: '10px 26px 10px 12px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Roboto font.
@@ -62,7 +65,7 @@ const columns = [
     field: 'title',
     headerName: 'Title',
     flex: 1,
-    minWidth: 300,
+    minWidth: 130,
     filterable: false,
     sortable: false,
   },
@@ -71,29 +74,58 @@ const columns = [
     headerName: 'Status',
     sortable: false,
     filterable: false,
-    width: 150,
+    width: 100,
   },
   {
     field: 'creator',
     headerName: 'Creator',
     sortable: false,
     filterable: false,
-    width: 150,
+    width: 110,
   },
   {
     field: 'created',
     headerName: 'Created',
     sortable: false,
     filterable: false,
-    width: 150,
+    width: 120,
   },
   {
     field: 'language',
     headerName: 'Language',
     sortable: false,
     filterable: false,
-    width: 150,
+    width: 120,
   },
+  {
+    field: 'id',
+    headerName: ' ',
+    sortable: false,
+    filterable: false,
+    width: 120,
+    renderCell: () => (
+      <strong>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          style={{
+            marginLeft: 0,
+            marginRight: 0,
+            padding: 0,
+            textTransform: 'initial',
+            minWidth: 40,
+            width: 80
+          }}
+        >
+          View
+        </Button>
+        <IconButton>
+          <MoreVerticalIcon size={18} />
+        </IconButton>
+      </strong>
+    ),
+  }
 ];
 
 const rows = [
@@ -103,7 +135,8 @@ const rows = [
     status: 'Not Started',
     creator: 'Boris Nikolaev',
     created: 'about 5 hours ago',
-    language: 'java'
+    language: 'java',
+    isEditable: false
   },
   {
     id: 2,
@@ -163,6 +196,9 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiSelect-selectMenu': {
       fontSize: '14px !important',
       padding: '6.64px 32px 9px 14px !important',
+    },
+    '& .MuiSelect-icon': {
+      right: '7px',
     }
   }
 }));
@@ -218,15 +254,15 @@ const Dashboard = () => {
               <Box flexGrow={1}>
                 <FormControl fullWidth className={classes.margin} style={{ backgroundColor: 'white' }} variant="outlined" size="small">
                   <OutlinedInput
-                    style={{ height: '37px', fontSize: '14px' }}
+                    style={{ height: '37px', fontSize: '14px', marginRight: '0px' }}
                     id="outlined-adornment-amount"
                     // value={values.amount}
                     // onChange={handleChange('amount')}
                     inputProps={{
                       placeholder: 'Search pad title or creator',
-                      style: { backgroundColor: 'white' }
+                      style: { backgroundColor: 'white', paddingBottom: '10px' }
                     }}
-                    startAdornment={<InputAdornment position="start"><SearchIcon size={24} /></InputAdornment>}
+                    startAdornment={<InputAdornment position="start"><SearchIcon size={17} /></InputAdornment>}
                   // labelWidth={60}
                   />
                 </FormControl>
